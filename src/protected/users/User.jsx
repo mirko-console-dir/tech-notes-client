@@ -4,8 +4,10 @@ import { faPenToSquare } from "@fortawesome/free-solid-svg-icons";
 
 function User({ user }) {
   const navigate = useNavigate();
+  console.log(user);
+  console.log(user.id);
 
-  const handleEdit = () => navigate(`/dash/users/${user.id}`);
+  const handleEdit = () => navigate(`/dash/users/${user._id}`);
 
   const userRolesString = user.roles.toString().replaceAll(",", ", ");
 

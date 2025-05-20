@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import getNotes from "../../api/notes/getNotes";
+import getNotes from "../../api/notes/queries/getNotes";
 import Note from "./Note";
 
 function NotesList() {
