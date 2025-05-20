@@ -44,6 +44,7 @@ function NewUserForm() {
   const onPasswordChanged = (e) => setPassword(e.target.value);
 
   const onRolesChanged = (e) => {
+    console.log(e.target.selectedOptions);
     const values = Array.from(
       e.target.selectedOptions, //HTMLCollection
       (option) => option.value
@@ -120,6 +121,7 @@ function NewUserForm() {
         <label className="form__label" htmlFor="roles">
           ASSIGNED ROLES:
         </label>
+        <p>Hold Ctrl(Window)/Cmd(Mac) for multyselection</p>
         <select
           id="roles"
           name="roles"
