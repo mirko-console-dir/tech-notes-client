@@ -1,8 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
-import EditUserForm from "./EditUserForm";
 import getUsers from "../../api/users/queries/getUsers";
 import { useQuery } from "@tanstack/react-query";
+import EditUserForm from "./EditUserForm";
+
 function EditUser() {
   const { id } = useParams();
   const queryClient = useQueryClient();

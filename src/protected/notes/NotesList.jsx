@@ -1,6 +1,7 @@
 import { useQuery } from "@tanstack/react-query";
 import getNotes from "../../api/notes/queries/getNotes";
 import Note from "./Note";
+import { Link } from "react-router-dom";
 
 function NotesList() {
   const {
@@ -21,40 +22,51 @@ function NotesList() {
   }
 
   if (!notes.length) {
-    return <span>No notes yet!</span>;
+    return (
+      <>
+        <p className="general-btn" style={{ marginBottom: "1rem" }}>
+          <Link to="/dash/notes/new">Create Note</Link>
+        </p>
+        <p>No notes yet!</p>
+      </>
+    );
   }
-  console.log(notes);
 
   const tableContent = notes?.length
-    ? notes.map((note) => <Note key={note.id} note={note} />)
+    ? notes.map((note) => <Note key={note._id} note={note} />)
     : null;
 
   return (
-    <table className="table table--notes">
-      <thead className="table__thead">
-        <tr>
-          <th scope="col" className="table__th note__status">
-            Username
-          </th>
-          <th scope="col" className="table__th note__created">
-            Created
-          </th>
-          <th scope="col" className="table__th note__updated">
-            Updated
-          </th>
-          <th scope="col" className="table__th note__title">
-            Title
-          </th>
-          <th scope="col" className="table__th note__username">
-            Owner
-          </th>
-          <th scope="col" className="table__th note__edit">
-            Edit
-          </th>
-        </tr>
-      </thead>
-      <tbody>{tableContent}</tbody>
-    </table>
+    <>
+      <p className="general-btn" style={{ marginBottom: "1rem" }}>
+        <Link to="/dash/notes/new">Create Note</Link>
+      </p>
+      <table className="table table--notes">
+        <thead className="table__thead">
+          <tr>
+            <th scope="col" className="table__th note__status">
+              Username
+            </th>
+            <th scope="col" className="table__th note__created">
+              Created
+            </th>
+            <th scope="col" className="table__th note__updated">
+              Updated
+            </th>
+            <th scope="col" className="table__th note__title">
+              Title
+            </th>
+            <th scope="col" className="table__th note__username">
+              Owner
+            </th>
+            <th scope="col" className="table__th note__edit">
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>{tableContent}</tbody>
+      </table>
+    </>
   );
 }
 

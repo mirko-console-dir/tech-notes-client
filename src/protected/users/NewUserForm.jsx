@@ -44,7 +44,6 @@ function NewUserForm() {
   const onPasswordChanged = (e) => setPassword(e.target.value);
 
   const onRolesChanged = (e) => {
-    console.log(e.target.selectedOptions);
     const values = Array.from(
       e.target.selectedOptions, //HTMLCollection
       (option) => option.value

@@ -187,6 +187,7 @@ const EditUserForm = ({ user }) => {
         <label className="form__label" htmlFor="roles">
           ASSIGNED ROLES:
         </label>
+        <p>Hold Ctrl(Window)/Cmd(Mac) for multyselection</p>
         <select
           id="roles"
           name="roles"
