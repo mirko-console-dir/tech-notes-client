@@ -1,6 +1,7 @@
-import getUsers from "../../api/users/getUsers";
+import getUsers from "../../api/users/queries/getUsers";
 import { useQuery } from "@tanstack/react-query";
 import User from "./User";
+import { Link } from "react-router-dom";
 
 function UsersList() {
   const {
@@ -11,6 +12,7 @@ function UsersList() {
     queryKey: ["users"],
     queryFn: getUsers,
   });
+
   if (status === "pending") {
     return <span>Loading...</span>;
   }
@@ -20,30 +22,42 @@ function UsersList() {
   }
 
   if (!users.length) {
-    return <span>No user yet!</span>;
+    return (
+      <>
+        <p className="general-btn" style={{ marginBottom: "1rem" }}>
+          <Link to="/dash/users/new">Create User</Link>
+        </p>
+        <p>No user yet!</p>
+      </>
+    );
   }
-  console.log(users);
+
   const tableContent = users?.length
     ? users.map((user) => <User key={user.username} user={user} />)
     : null;
 
   return (
-    <table className="table table--users">
-      <thead className="table__thead">
-        <tr>
-          <th scope="col" className="table__th user__username">
-            Username
-          </th>
-          <th scope="col" className="table__th user__roles">
-            Roles
-          </th>
-          <th scope="col" className="table__th user__edit">
-            Edit
-          </th>
-        </tr>
-      </thead>
-      <tbody>{tableContent}</tbody>
-    </table>
+    <>
+      <p className="general-btn" style={{ marginBottom: "1rem" }}>
+        <Link to="/dash/users/new">Create User</Link>
+      </p>
+      <table className="table table--users">
+        <thead className="table__thead">
+          <tr>
+            <th scope="col" className="table__th user__username">
+              Username
+            </th>
+            <th scope="col" className="table__th user__roles">
+              Roles
+            </th>
+            <th scope="col" className="table__th user__edit">
+              Edit
+            </th>
+          </tr>
+        </thead>
+        <tbody>{tableContent}</tbody>
+      </table>
+    </>
   );
 }
 

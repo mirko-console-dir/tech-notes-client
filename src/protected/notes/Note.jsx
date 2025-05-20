@@ -16,7 +16,7 @@ const Note = ({ note }) => {
       month: "long",
     });
 
-    const handleEdit = () => navigate(`/dash/notes/${note.id}`);
+    const handleEdit = () => navigate(`/dash/notes/${note._id}`);
 
     return (
       <tr className="table__row">
