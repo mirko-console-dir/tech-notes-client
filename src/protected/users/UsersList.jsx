@@ -22,7 +22,14 @@ function UsersList() {
   }
 
   if (!users.length) {
-    return <span>No user yet!</span>;
+    return (
+      <>
+        <p className="general-btn" style={{ marginBottom: "1rem" }}>
+          <Link to="/dash/users/new">Create User</Link>
+        </p>
+        <p>No user yet!</p>
+      </>
+    );
   }
 
   const tableContent = users?.length
